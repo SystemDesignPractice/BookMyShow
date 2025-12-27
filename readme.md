@@ -364,3 +364,30 @@ Another way:
 1. We use "READ_COMMITTED" for a transaction book_ticket start.
 2. and we put a lock when we findById() in seatRepository.
 3. This will work because Serializable is overkill, considering concurrency is already handled by locking.
+
+## Output:
+
+POST - http://localhost:8080/ticket
+
+RequestBody - 
+```
+{
+    "seatIds":[1,2],
+    "userId" : 1
+}
+```
+
+Response -
+
+```
+{
+    "auditoriumName": "Audi1",
+    "movieName": "DDLJ",
+    "seatNumbers": [
+        "1A",
+        "2A"
+    ],
+    "timeOfShow": "2025-12-28T09:00:00",
+    "totalAmount": 200.0
+}
+```
