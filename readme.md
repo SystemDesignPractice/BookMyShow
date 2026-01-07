@@ -48,7 +48,30 @@ Features:
 4. @Column(name="column_name") - Columns in the table.
 5. @ElementCollection - Used on attributes which are a list of enums
 6. @Enumerated(EnumType.String) - Tells that this attribute is ENUM.
-7. @Temporal(value = TemporalType.TIMESTAMP),@CreatedAt,@LastModifiedDate - For createdAt,updatedAt , we can put this annotation so JPA will automatically populate this with timestamps.
+7. @Temporal(value = TemporalType.TIMESTAMP),@CreatedAt,@LastModifiedDate - For createdAt,updatedAt , we can put this annotation so JPA will automatically populate this with timestamps. 
+
+### Command Line Runner:
+
+So moment the spring application is run it will call both run methods.
+
+```
+@SpringBootApplication
+public class SplitwiseApplication implements CommandLineRunner {
+
+	@Autowired
+	private InitService initService;
+
+	public static void main(String[] args) {
+
+		SpringApplication.run(SplitwiseApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		initService.initialize();
+	}
+}
+```
 
 ### application properties file
 
